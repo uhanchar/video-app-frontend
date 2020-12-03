@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "block-no-empty": true,
+    "color-hex-case": [
+      "lower",
+      {
+        "message": "Lowercase letters are easier to distinguish from numbers"
+      }
+    ],
+    "block-closing-brace-newline-after": "always",
+    "color-no-invalid-hex": true,
+    "indentation": 2,
+    "property-no-unknown": true,
+    "max-empty-lines": 1,
+    "value-keyword-case": "lower",
+    "at-rule-empty-line-before": null,
+    "rule-empty-line-before": null
+  }
+}

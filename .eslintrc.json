@@ -1,0 +1,67 @@
+{
+  "extends": ["react-app", "eslint-config-airbnb-typescript", "plugin:jest/all"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "ignorePatterns": [
+    "src/react-app-env.d.ts",
+    "jest.config.js",
+    "setupTest.ts"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "max-len": ["error", 140],
+        "indent": "off",
+        "quotes": ["error", "single"],
+        "linebreak-style": "off",
+        "newline-before-return": "error",
+        "array-bracket-spacing": ["error", "always"],
+        "import/newline-after-import": ["error", { "count": 1 }],
+        "comma-dangle": ["error", {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "functions": "always-multiline"
+        }],
+        "@typescript-eslint/indent": ["error", 2],
+        "@typescript-eslint/member-delimiter-style": ["error", {
+          "multiline": {
+            "requireLast": true
+          }
+        }],
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/no-this-alias": [ "error", { "allowedNames": [ "self" ] } ],
+        "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/quotes": [ "error", "single", { "avoidEscape": true } ],
+        "@typescript-eslint/semi": [ "error",  "always" ],
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/unified-signatures": "error",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "off",
+        "jest/valid-expect": "error",
+        "jest/prefer-called-with": "off",
+        "jest/no-hooks": "off",
+        "jest/prefer-expect-assertions": "off",
+        "no-underscore-dangle": "off",
+        "object-curly-newline": "off",
+        "import/prefer-default-export": "off",
+        "import/no-named-as-default": "off",
+        "template-curly-spacing": ["error", "always"],
+        "react/jsx-indent": ["error", 2],
+        "react/jsx-indent-props": ["error", 2],
+        "react/jsx-props-no-spreading": "off",
+        "react/destructuring-assignment": "off",
+        "react/prop-types": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/label-has-associated-control": "off"
+      }
+    }
+  ]
+}
