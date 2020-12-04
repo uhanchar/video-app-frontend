@@ -1,5 +1,12 @@
+@import "src/constants";
+
 .app {
   width: 100%;
   height: 100vh;
   background: #f9f9f9;
+
+  > .container {
+    height: calc(100vh - #{ $header-height });
+    padding: 0;
+  }
 }

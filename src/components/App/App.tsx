@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Container } from '@material-ui/core';
 
 import 'components/App/App.scss';
 import Header from 'components/Header/Header';
@@ -11,10 +12,13 @@ const App = () => (
   <div className="app">
     <Header />
 
-    <Switch>
-      <Route path={LocationPath.Home} exact component={VideoList} />
-      <Route path={LocationPath.Upload} exact component={UploadVideo} />
-    </Switch>
+    <Container maxWidth="xl" className="container">
+      <Switch>
+        <Route path={LocationPath.Home} exact component={VideoList} />
+
+        <Route path={LocationPath.Upload} exact component={UploadVideo} />
+      </Switch>
+    </Container>
   </div>
 );
 

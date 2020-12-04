@@ -1,3 +1,58 @@
+@import "src/constants";
+
 .upload-video {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  height: calc(100vh - #{ $header-height });
+  padding: 1.875rem 1.25rem;
+  box-sizing: border-box;
+
+  > .title {
+    margin-bottom: 6rem;
+    font-size: 1.25rem;
+  }
+
+  > .form {
+    width: 100%;
+
+    > .container {
+
+      > .upload-controls {
+        display: flex;
+        justify-content: center;
+
+        > .filename {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 3rem;
+          color: #90a0b7;
+          font-size: 1rem;
+        }
+
+        > .error {
+          color: #e32020;
+          font-size: 1.125rem;
+          font-weight: 500;
+        }
+
+        > .input {
+          display: none;
+        }
+      }
+
+      .submit-button {
+        width: 100%;
+        background: $color-success;
+        color: $color-blank;
+
+        &:disabled {
+          background: #e3dede;
+          color: #a09c9c;
+        }
+      }
+    }
+  }
 }
