@@ -1,10 +1,11 @@
-import React, { ChangeEvent, SyntheticEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, SyntheticEvent, useCallback, useRef, useState } from 'react';
 import { Button, Grid, LinearProgress, TextField } from '@material-ui/core';
 
 import 'components/UploadVideo/UploadVideo.scss';
 import { isNotValidFileSize, isNotValidFormat } from 'helpers/file-format-validation.helper';
 import { ErrorMessages } from 'constants/error-messages.enum';
 import { uploadVideo } from 'services/upload-video.service';
+import UploadConfirmation from 'components/UploadConfirmation/UploadConfirmation';
 
 const UploadVideo = () => {
   const [ fileName, setFileName ] = useState<string>('');
@@ -15,6 +16,7 @@ const UploadVideo = () => {
   const [ serverError, setServerError ] = useState('');
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const [ loadingProgress, setIsLoadingProgress ] = useState<number>(0);
+  const [ isConfirmationOpen, setIsConfirmationOpen ] = useState<boolean>(false);
   const fileInput = useRef<HTMLInputElement | null>(null);
 
   const onBrowseClick = () => {
@@ -75,6 +77,7 @@ const UploadVideo = () => {
       await uploadVideo({ fileName: fileTitle, fileDescription, file: file! }, setIsLoadingProgress);
 
       clearState();
+      setIsConfirmationOpen(true);
     } catch (err) {
       setIsLoading(false);
       setIsLoadingProgress(0);
@@ -83,6 +86,10 @@ const UploadVideo = () => {
       setServerError(errorMessage || ErrorMessages.GENERIS_SERVER_ERROR_MESSAGE);
     }
   };
+
+  const closeConfirmation = useCallback(() => {
+    setIsConfirmationOpen(false);
+  }, []);
 
   const sendButtonDisabled = !!error || isLoading || !fileTitle.trim().length || !file;
 
@@ -191,6 +198,8 @@ const UploadVideo = () => {
           </Grid>
         </Grid>
       </form>
+
+      <UploadConfirmation isOpen={isConfirmationOpen} closeSnackbar={closeConfirmation} />
     </div>
   );
 };
