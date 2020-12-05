@@ -1,9 +1,6 @@
-import { FILE_FORMATS } from 'constants/file-formats';
+import { FILE_FORMATS, MAX_FILE_SIZE } from 'constants/file-uploading';
 
-const getFileFormat = (fileType: string): string => fileType.split('/').pop()!;
+export const isNotValidFormat = (fileName: string): boolean => FILE_FORMATS
+  .some((format: string) => fileName.toLowerCase().endsWith(format));
 
-export const isNotValidFormat = (fileType: string): boolean => {
-  const fileFormat = getFileFormat(fileType);
-
-  return FILE_FORMATS.includes(fileFormat);
-};
+export const isNotValidFileSize = (fileSize: number): boolean => fileSize <= MAX_FILE_SIZE;

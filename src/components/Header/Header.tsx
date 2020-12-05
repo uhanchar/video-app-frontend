@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 import 'components/Header/Header.scss';
-import { LocationPath } from 'constants/location-path';
+import { LocationPath } from 'constants/location-path.enum';
 
 const Header = () => {
   const history = useHistory();

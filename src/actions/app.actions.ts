@@ -1,5 +1,10 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { LOAD_VIDEOS } from 'actions/types';
+import { fetchVideos } from 'services/app.service';
 
-export const loadVideos = createAction(LOAD_VIDEOS);
+export interface ILoadVideos {
+  payload: string[];
+}
+
+export const loadVideos = createAsyncThunk(LOAD_VIDEOS, () => fetchVideos());

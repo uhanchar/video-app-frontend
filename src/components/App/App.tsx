@@ -6,7 +6,7 @@ import 'components/App/App.scss';
 import Header from 'components/Header/Header';
 import VideoList from 'components/VideoList/VideoList';
 import UploadVideo from 'components/UploadVideo/UploadVideo';
-import { LocationPath } from 'constants/location-path';
+import { LocationPath } from 'constants/location-path.enum';
 
 const App = () => (
   <div className="app">

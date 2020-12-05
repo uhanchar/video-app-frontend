@@ -1,9 +1,10 @@
 import React, { ChangeEvent, SyntheticEvent, useRef, useState } from 'react';
-import { Button, Grid, TextField } from '@material-ui/core';
+import { Button, Grid, LinearProgress, TextField } from '@material-ui/core';
 
 import 'components/UploadVideo/UploadVideo.scss';
-import { isNotValidFormat } from 'helpers/file-format-validation.helper';
-import { WRONG_FILE_FORMAT_MESSAGE } from 'constants/error-messages';
+import { isNotValidFileSize, isNotValidFormat } from 'helpers/file-format-validation.helper';
+import { ErrorMessages } from 'constants/error-messages.enum';
+import { uploadVideo } from 'services/upload-video.service';
 
 const UploadVideo = () => {
   const [ fileName, setFileName ] = useState<string>('');
@@ -11,6 +12,9 @@ const UploadVideo = () => {
   const [ fileDescription, setFileDescription ] = useState<string>('');
   const [ file, setFile ] = useState<File | null>(null);
   const [ error, setError ] = useState<string>('');
+  const [ serverError, setServerError ] = useState('');
+  const [ isLoading, setIsLoading ] = useState<boolean>(false);
+  const [ loadingProgress, setIsLoadingProgress ] = useState<number>(0);
   const fileInput = useRef<HTMLInputElement | null>(null);
 
   const onBrowseClick = () => {
@@ -28,8 +32,14 @@ const UploadVideo = () => {
       return;
     }
 
-    if (!isNotValidFormat(fileToUpload.type)) {
-      setError(WRONG_FILE_FORMAT_MESSAGE);
+    if (!isNotValidFormat(fileToUpload.name)) {
+      setError(ErrorMessages.WRONG_FILE_FORMAT_MESSAGE);
+
+      return;
+    }
+
+    if (!isNotValidFileSize(fileToUpload.size)) {
+      setError(ErrorMessages.INVALID_FILE_SIZE);
 
       return;
     }
@@ -46,18 +56,49 @@ const UploadVideo = () => {
     setFileDescription(event.target.value);
   };
 
-  const handleFileDataSubmit = (event: SyntheticEvent) => {
-    event.preventDefault();
-
-    // TODO: Add file submitting logic
+  const clearState = () => {
+    setFileName('');
+    setFileTitle('');
+    setFileDescription('');
+    setFile(null);
+    setIsLoading(false);
+    setIsLoadingProgress(0);
   };
 
-  const sendButtonDisabled = !!error || !fileTitle.trim().length || !file;
+  const handleFileDataSubmit = async (event: SyntheticEvent) => {
+    event.preventDefault();
+    setServerError('');
+    setIsLoading(true);
 
-  const renderError = () => (
-    error && (
+    try {
+      await uploadVideo({ fileName: fileTitle, fileDescription, file: file! }, setIsLoadingProgress);
+
+      clearState();
+    } catch (err) {
+      setIsLoading(false);
+      setIsLoadingProgress(0);
+
+      const errorMessage = err?.response?.data;
+      setServerError(errorMessage || ErrorMessages.GENERIS_SERVER_ERROR_MESSAGE);
+    }
+  };
+
+  const sendButtonDisabled = !!error || isLoading || !fileTitle.trim().length || !file;
+
+  const renderError = (content: string) => (
+    content && (
       <Grid className="upload-controls" item xs={12}>
-        <div className="error">{ error }</div>
+        <div className="error">{ content }</div>
+      </Grid>
+    )
+  );
+
+  const renderFileLoadingProgress = () => (
+    isLoading && (
+      <Grid className="upload-controls" item xs={12}>
+        <Grid item xs={12} md={6} lg={4}>
+          <LinearProgress className="progress" variant="determinate" value={loadingProgress} />
+        </Grid>
       </Grid>
     )
   );
@@ -72,7 +113,11 @@ const UploadVideo = () => {
             <div className="filename">{ fileName }</div>
           </Grid>
 
-          { renderError() }
+          { renderError(error) }
+
+          { renderError(serverError) }
+
+          { renderFileLoadingProgress() }
 
           <Grid className="upload-controls" item xs={12} md={6} lg={4}>
             <input
@@ -82,6 +127,7 @@ const UploadVideo = () => {
               type="file"
               multiple={false}
               ref={fileInput}
+              disabled={isLoading}
               onChange={handleFileChange}
             />
 
@@ -90,6 +136,7 @@ const UploadVideo = () => {
                 variant="contained"
                 color="primary"
                 component="span"
+                disabled={isLoading}
                 onClick={onBrowseClick}
               >
                 Upload
