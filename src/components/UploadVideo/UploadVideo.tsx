@@ -25,6 +25,7 @@ const UploadVideo = () => {
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     setError('');
+    setServerError('');
 
     const fileToUpload = event.target.files?.item(0);
 
