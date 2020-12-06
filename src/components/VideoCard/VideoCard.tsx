@@ -9,7 +9,7 @@ import ReactPlayer from 'react-player';
 import { formatValidDate } from 'helpers/date-format.helper';
 
 const VideoCard = (props: IVideoItem) => {
-  const { name, description, createdAt, link, id } = props;
+  const { name, description, createdAt, link, thumbnailLink, id } = props;
   const history = useHistory();
   const [ isPlaying, setIsPlaying ] = useState<boolean>(false);
 
@@ -32,8 +32,15 @@ const VideoCard = (props: IVideoItem) => {
         subheader={formatValidDate(createdAt)}
       />
 
-      <CardMedia className="media" onMouseEnter={onMouseVideoEnter} onMouseLeave={onMouseVideoLeave}>
-        <ReactPlayer url={`/${ link }`} className="player" loop playing={isPlaying} volume={0} />
+      <CardMedia className="media" onMouseOver={onMouseVideoEnter} onMouseOut={onMouseVideoLeave}>
+        <ReactPlayer
+          url={`/${ link }`}
+          light={isPlaying ? false : `/${ thumbnailLink }`}
+          className="player"
+          loop
+          playing={isPlaying}
+          volume={0}
+        />
       </CardMedia>
 
       <CardContent className="content">

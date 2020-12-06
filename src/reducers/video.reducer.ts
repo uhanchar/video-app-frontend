@@ -5,11 +5,23 @@ import { loadSelectedVideo, clearVideoState } from 'actions/video.actions';
 
 const initialState: IVideoState = {
   video: null,
+  isLoading: false,
+  error: '',
 };
 
 const VideoReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(loadSelectedVideo.fulfilled, (state: IVideoState, action: PayloadAction<IVideoItem>) => ({ ...state, video: action.payload }))
+    .addCase(loadSelectedVideo.pending, (state: IVideoState) => ({ ...state, loading: true, error: '' }))
+    .addCase(loadSelectedVideo.fulfilled, (state: IVideoState, action: PayloadAction<IVideoItem>) => ({
+      ...state,
+      video: action.payload,
+      isLoading: false,
+    }))
+    .addCase(loadSelectedVideo.rejected, (state: IVideoState, action) => ({
+      ...state,
+      loading: false,
+      error: action.error.message as string,
+    }))
     .addCase(clearVideoState, () => ({ ...initialState }));
 });
 

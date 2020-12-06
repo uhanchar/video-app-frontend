@@ -6,6 +6,7 @@ import { isNotValidFileSize, isNotValidFormat } from 'helpers/file-format-valida
 import { ErrorMessages } from 'constants/error-messages.enum';
 import { uploadVideo } from 'services/upload-video.service';
 import UploadConfirmation from 'components/UploadConfirmation/UploadConfirmation';
+import Error from 'components/Error/Error';
 
 const UploadVideo = () => {
   const [ fileName, setFileName ] = useState<string>('');
@@ -95,9 +96,7 @@ const UploadVideo = () => {
 
   const renderError = (content: string) => (
     content && (
-      <Grid className="upload-controls" item xs={12}>
-        <div className="error">{ content }</div>
-      </Grid>
+      <Error content={content} />
     )
   );
 

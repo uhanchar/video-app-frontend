@@ -7,6 +7,8 @@ import 'components/Video/Video.scss';
 import { clearVideoState, loadSelectedVideo } from 'actions/video.actions';
 import { RootState } from 'reducers/types';
 import { formatValidDate } from 'helpers/date-format.helper';
+import Loader from 'components/Loader/Loader';
+import Error from 'components/Error/Error';
 
 interface IVideo {
   match: {
@@ -19,7 +21,7 @@ interface IVideo {
 const Video: FC<IVideo> = (props) => {
   const { id } = props.match.params;
   const dispatch = useDispatch();
-  const { video } = useSelector((state: RootState) => state.video);
+  const { video, isLoading, error } = useSelector((state: RootState) => state.video);
 
   useEffect(() => {
     dispatch(loadSelectedVideo(id));
@@ -29,9 +31,25 @@ const Video: FC<IVideo> = (props) => {
     };
   }, []);
 
+  const renderLoader = () => (
+    isLoading && (
+      <Loader size="3rem" />
+    )
+  );
+
+  const renderError = () => (
+    error && (
+      <Error content={error} />
+    )
+  );
+
   return (
     <div className="video">
-      { video && (
+      { renderLoader() }
+
+      { renderError() }
+
+      { !isLoading && video && !error && (
         <Grid container item className="container" justify="center" spacing={2} xs={12} sm={12} md={6}>
           <Grid item xs={12} className="item">
             <ReactPlayer url={`/${ video.link }`} controls className="player" />

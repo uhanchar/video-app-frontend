@@ -5,6 +5,7 @@ export interface IVideoItem {
   name: string;
   description: string;
   link: string;
+  thumbnailLink: string;
   createdAt: Date;
 }
 
@@ -14,6 +15,8 @@ export interface IAppState {
 
 export interface IVideoState {
   video: NullableType<IVideoItem>;
+  isLoading: boolean;
+  error: string;
 }
 
 export type RootState = {
