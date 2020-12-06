@@ -6,6 +6,7 @@ import 'components/App/App.scss';
 import Header from 'components/Header/Header';
 import VideoList from 'components/VideoList/VideoList';
 import UploadVideo from 'components/UploadVideo/UploadVideo';
+import Video from 'components/Video/Video';
 import { LocationPath } from 'constants/location-path.enum';
 
 const App = () => (
@@ -17,6 +18,8 @@ const App = () => (
         <Route path={LocationPath.Home} exact component={VideoList} />
 
         <Route path={LocationPath.Upload} exact component={UploadVideo} />
+
+        <Route path={`${ LocationPath.Video }/:id`} component={Video} />
       </Switch>
     </Container>
   </div>

@@ -1,0 +1,42 @@
+@import "src/constants";
+
+.video {
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  height: calc(100vh - #{ $header-height });
+  padding: 1.875rem 1.25rem;
+  box-sizing: border-box;
+
+  > .container {
+    margin: 0 auto;
+
+    > .item {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding-top: 56.25%;
+
+      > .player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+
+        > video {
+          background: $primary-color-black;
+        }
+      }
+    }
+
+    > .text {
+      display: flex;
+      justify-content: space-between;
+
+      > .text-content {
+        text-align: justify;
+      }
+    }
+  }
+}

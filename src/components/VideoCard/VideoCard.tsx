@@ -1,41 +1,39 @@
-import React from 'react';
-import { Card, CardHeader, CardMedia, CardContent, Typography, CircularProgress } from '@material-ui/core';
-import { formatDistance } from 'date-fns';
-import HoverVideoPlayer from 'react-hover-video-player';
+import React, { useState } from 'react';
+import { Card, CardHeader, CardMedia, CardContent, Typography } from '@material-ui/core';
 
 import 'components/VideoCard/VideoCard.scss';
 import { IVideoItem } from 'reducers/types';
 import { useHistory } from 'react-router-dom';
 import { LocationPath } from 'constants/location-path.enum';
+import ReactPlayer from 'react-player';
+import { formatValidDate } from 'helpers/date-format.helper';
 
 const VideoCard = (props: IVideoItem) => {
   const { name, description, createdAt, link, id } = props;
   const history = useHistory();
-
-  const formatVideDate = (): string => `${ formatDistance(new Date(createdAt), new Date()) } ago`;
+  const [ isPlaying, setIsPlaying ] = useState<boolean>(false);
 
   const onCardClick = () => {
-    history.push(`${ LocationPath.Upload }/${ id }`);
+    history.push(`${ LocationPath.Video }/${ id }`);
   };
 
-  const renderPreviewLoader = () => (
-    <CircularProgress size="2rem" className="loading" />
-  );
+  const onMouseVideoEnter = () => {
+    setIsPlaying(true);
+  };
+
+  const onMouseVideoLeave = () => {
+    setIsPlaying(false);
+  };
 
   return (
     <Card className="video-card" onClick={onCardClick}>
       <CardHeader
         title={name}
-        subheader={formatVideDate()}
+        subheader={formatValidDate(createdAt)}
       />
 
-      <CardMedia className="media">
-        <HoverVideoPlayer
-          className="preview"
-          videoSrc={link}
-          sizingMode="container"
-          loadingOverlay={renderPreviewLoader()}
-        />
+      <CardMedia className="media" onMouseEnter={onMouseVideoEnter} onMouseLeave={onMouseVideoLeave}>
+        <ReactPlayer url={`/${ link }`} className="player" loop playing={isPlaying} volume={0} />
       </CardMedia>
 
       <CardContent className="content">
