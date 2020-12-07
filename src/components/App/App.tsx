@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
@@ -9,7 +9,7 @@ import UploadVideo from 'components/UploadVideo/UploadVideo';
 import Video from 'components/Video/Video';
 import { LocationPath } from 'constants/location-path.enum';
 
-const App = () => (
+const App: FC = () => (
   <div className="app">
     <Header />
 

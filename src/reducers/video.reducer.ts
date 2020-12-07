@@ -11,7 +11,7 @@ const initialState: IVideoState = {
 
 const VideoReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(loadSelectedVideo.pending, (state: IVideoState) => ({ ...state, loading: true, error: '' }))
+    .addCase(loadSelectedVideo.pending, (state: IVideoState) => ({ ...state, isLoading: true, error: '' }))
     .addCase(loadSelectedVideo.fulfilled, (state: IVideoState, action: PayloadAction<IVideoItem>) => ({
       ...state,
       video: action.payload,
@@ -19,7 +19,7 @@ const VideoReducer = createReducer(initialState, (builder) => {
     }))
     .addCase(loadSelectedVideo.rejected, (state: IVideoState, action) => ({
       ...state,
-      loading: false,
+      isLoading: false,
       error: action.error.message as string,
     }))
     .addCase(clearVideoState, () => ({ ...initialState }));

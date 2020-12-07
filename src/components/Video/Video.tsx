@@ -56,7 +56,7 @@ const Video: FC<IVideo> = (props) => {
           </Grid>
 
           <Grid item xs={12} className="text">
-            <Typography variant="h4">{ video.name }</Typography>
+            <Typography variant="h4" data-testid="video-name">{ video.name }</Typography>
 
             <Typography variant="overline" display="block">{ formatValidDate(video.createdAt) }</Typography>
           </Grid>

@@ -9,7 +9,7 @@ interface ILoader {
 
 const Loader: FC<ILoader> = ({ size }) => (
   <div className="loader-wrapper">
-    <CircularProgress size={size} />
+    <CircularProgress size={size} data-testid="loader" />
   </div>
 );
 

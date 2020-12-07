@@ -9,7 +9,7 @@ interface IError {
 
 const Error: FC<IError> = ({ content }) => (
   <Grid className="error" item xs={12}>
-    <div className="content">{ content }</div>
+    <div className="content" data-testid="error">{ content }</div>
   </Grid>
 );
 

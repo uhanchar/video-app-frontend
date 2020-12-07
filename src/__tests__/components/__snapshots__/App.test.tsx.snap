@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for App component should render App component 1`] = `
+<DocumentFragment>
+  <div
+    class="app"
+  >
+    <header
+      class="header"
+      data-testid="header"
+    >
+      <a
+        aria-current="page"
+        class="title active"
+        href="/"
+      >
+        Video app
+      </a>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+        data-testid="header-navigate-button"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Upload video
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </header>
+    <div
+      class="MuiContainer-root container MuiContainer-maxWidthXl"
+    >
+      <div
+        class="video-list"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

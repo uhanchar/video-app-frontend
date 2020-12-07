@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for VideoList component should render VideoList component 1`] = `
+<DocumentFragment>
+  <div
+    class="video-list"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12"
+    />
+  </div>
+</DocumentFragment>
+`;

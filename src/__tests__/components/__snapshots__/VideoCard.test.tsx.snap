@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for VideoCard component should render VideoCard component 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root video-card MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="video-card"
+  >
+    <div
+      class="MuiCardHeader-root"
+    >
+      <div
+        class="MuiCardHeader-content"
+      >
+        <span
+          class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+        >
+          enem2
+        </span>
+        <span
+          class="MuiTypography-root MuiCardHeader-subheader MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+        >
+          less than a minute ago
+        </span>
+      </div>
+    </div>
+    <div
+      class="MuiCardMedia-root media"
+      data-testid="video-card-media"
+    >
+      <div
+        class="player"
+        data-testid="video-card-player"
+        style="width: 640px; height: 360px;"
+      />
+    </div>
+    <div
+      class="MuiCardContent-root content"
+    >
+      <p
+        class="MuiTypography-root description MuiTypography-body2 MuiTypography-colorTextSecondary"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

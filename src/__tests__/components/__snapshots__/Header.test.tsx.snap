@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for Header component should render Header component 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+    data-testid="header"
+  >
+    <a
+      aria-current="page"
+      class="title active"
+      href="/"
+    >
+      Video app
+    </a>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+      data-testid="header-navigate-button"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Upload video
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </header>
+</DocumentFragment>
+`;

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for Loader component should render Loader component 1`] = `
+<DocumentFragment>
+  <div
+    class="loader-wrapper"
+  >
+    <div
+      class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+      data-testid="loader"
+      role="progressbar"
+      style="width: 48px; height: 48px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

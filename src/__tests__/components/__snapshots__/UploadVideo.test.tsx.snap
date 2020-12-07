@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for UploadVideo component should render Upload Video component 1`] = `
+<DocumentFragment>
+  <div
+    class="upload-video"
+  >
+    <div
+      class="title"
+    >
+      Upload video
+    </div>
+    <form
+      class="form"
+    >
+      <div
+        class="MuiGrid-root container MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+      >
+        <div
+          class="MuiGrid-root upload-controls MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="filename"
+            data-testid="file-name"
+          />
+        </div>
+        <div
+          class="MuiGrid-root upload-controls MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+        >
+          <input
+            accept="video/*"
+            class="input"
+            data-testid="file-input"
+            id="contained-button-file"
+            type="file"
+          />
+          <label
+            for="contained-button-file"
+          >
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Upload
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </span>
+          </label>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-center MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root text-input MuiFormControl-fullWidth"
+              data-testid="file-title"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+                data-shrink="false"
+                for="video-title"
+                id="video-title-label"
+              >
+                Title
+                <span
+                  aria-hidden="true"
+                  class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                >
+                   *
+                </span>
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input"
+                  id="video-title"
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-3"
+                  >
+                    <span>
+                      Title *
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-center MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root text-input MuiFormControl-fullWidth"
+              data-testid="file-description"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                data-shrink="false"
+                for="description"
+                id="description-label"
+              >
+                Description
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+              >
+                <textarea
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                  id="description"
+                  rows="1"
+                  style="height: 0px; overflow: hidden;"
+                />
+                <textarea
+                  aria-hidden="true"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                  readonly=""
+                  style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                  tabindex="-1"
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-3"
+                  >
+                    <span>
+                      Description
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-center MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-2 MuiGrid-grid-lg-1"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained submit-button MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+              data-testid="file-submit"
+              disabled=""
+              tabindex="-1"
+              type="submit"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Submit
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Card, CardHeader, CardMedia, CardContent, Typography } from '@material-ui/core';
 
 import 'components/VideoCard/VideoCard.scss';
@@ -8,7 +8,7 @@ import { LocationPath } from 'constants/location-path.enum';
 import ReactPlayer from 'react-player';
 import { formatValidDate } from 'helpers/date-format.helper';
 
-const VideoCard = (props: IVideoItem) => {
+const VideoCard: FC<IVideoItem> = (props: IVideoItem) => {
   const { name, description, createdAt, link, thumbnailLink, id } = props;
   const history = useHistory();
   const [ isPlaying, setIsPlaying ] = useState<boolean>(false);
@@ -26,17 +26,23 @@ const VideoCard = (props: IVideoItem) => {
   };
 
   return (
-    <Card className="video-card" onClick={onCardClick}>
+    <Card className="video-card" onClick={onCardClick} data-testid="video-card">
       <CardHeader
         title={name}
         subheader={formatValidDate(createdAt)}
       />
 
-      <CardMedia className="media" onMouseOver={onMouseVideoEnter} onMouseOut={onMouseVideoLeave}>
+      <CardMedia
+        className="media"
+        data-testid="video-card-media"
+        onMouseOver={onMouseVideoEnter}
+        onMouseOut={onMouseVideoLeave}
+      >
         <ReactPlayer
           url={`/${ link }`}
           light={isPlaying ? false : `/${ thumbnailLink }`}
           className="player"
+          data-testid="video-card-player"
           loop
           playing={isPlaying}
           volume={0}

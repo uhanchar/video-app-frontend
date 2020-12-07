@@ -1,14 +1,14 @@
-import React, { ChangeEvent, SyntheticEvent, useCallback, useRef, useState } from 'react';
+import React, { ChangeEvent, FC, SyntheticEvent, useCallback, useRef, useState } from 'react';
 import { Button, Grid, LinearProgress, TextField } from '@material-ui/core';
 
 import 'components/UploadVideo/UploadVideo.scss';
-import { isNotValidFileSize, isNotValidFormat } from 'helpers/file-format-validation.helper';
+import { isValidFileSize, isValidFormat } from 'helpers/file-format-validation.helper';
 import { ErrorMessages } from 'constants/error-messages.enum';
 import { uploadVideo } from 'services/upload-video.service';
 import UploadConfirmation from 'components/UploadConfirmation/UploadConfirmation';
 import Error from 'components/Error/Error';
 
-const UploadVideo = () => {
+const UploadVideo: FC = () => {
   const [ fileName, setFileName ] = useState<string>('');
   const [ fileTitle, setFileTitle ] = useState<string>('');
   const [ fileDescription, setFileDescription ] = useState<string>('');
@@ -36,13 +36,13 @@ const UploadVideo = () => {
       return;
     }
 
-    if (!isNotValidFormat(fileToUpload.name)) {
+    if (!isValidFormat(fileToUpload.name)) {
       setError(ErrorMessages.WRONG_FILE_FORMAT_MESSAGE);
 
       return;
     }
 
-    if (!isNotValidFileSize(fileToUpload.size)) {
+    if (!isValidFileSize(fileToUpload.size)) {
       setError(ErrorMessages.INVALID_FILE_SIZE);
 
       return;
@@ -102,7 +102,7 @@ const UploadVideo = () => {
 
   const renderFileLoadingProgress = () => (
     isLoading && (
-      <Grid className="upload-controls" item xs={12}>
+      <Grid className="upload-controls" item xs={12} data-testid="linear-progress">
         <Grid item xs={12} md={6} lg={4}>
           <LinearProgress className="progress" variant="determinate" value={loadingProgress} />
         </Grid>
@@ -117,7 +117,7 @@ const UploadVideo = () => {
       <form className="form">
         <Grid container className="container" spacing={3} justify="center" alignItems="center">
           <Grid className="upload-controls" item xs={12}>
-            <div className="filename">{ fileName }</div>
+            <div className="filename" data-testid="file-name">{ fileName }</div>
           </Grid>
 
           { renderError(error) }
@@ -135,6 +135,7 @@ const UploadVideo = () => {
               multiple={false}
               ref={fileInput}
               disabled={isLoading}
+              data-testid="file-input"
               onChange={handleFileChange}
             />
 
@@ -160,6 +161,7 @@ const UploadVideo = () => {
                 className="text-input"
                 fullWidth
                 required
+                data-testid="file-title"
                 value={fileTitle}
                 onChange={onFileTitleChange}
               />
@@ -174,6 +176,7 @@ const UploadVideo = () => {
                 variant="outlined"
                 multiline
                 fullWidth
+                data-testid="file-description"
                 className="text-input"
                 value={fileDescription}
                 onChange={onFileDescriptionChange}
@@ -188,6 +191,7 @@ const UploadVideo = () => {
                 variant="contained"
                 size="large"
                 className="submit-button"
+                data-testid="file-submit"
                 disabled={sendButtonDisabled}
                 onClick={handleFileDataSubmit}
               >
