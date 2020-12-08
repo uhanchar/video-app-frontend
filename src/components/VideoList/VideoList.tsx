@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Grid } from '@material-ui/core';
 
 import 'components/VideoList/VideoList.scss';
 import { loadVideos } from 'actions/app.actions';
 import { IVideoItem, RootState } from 'reducers/types';
-import { Grid } from '@material-ui/core';
 import VideoCard from 'components/VideoCard/VideoCard';
 
 const VideoList: FC = () => {

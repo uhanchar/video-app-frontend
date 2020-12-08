@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Video app frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run project install npm dependencies
 
-## Available Scripts
+yarn
 
-In the project directory, you can run:
+In the project directory, run:
 
 ### `yarn start`
 
@@ -13,6 +13,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+To run backend part of application runt scripts in Video app backend
 
 ### `yarn test`
 

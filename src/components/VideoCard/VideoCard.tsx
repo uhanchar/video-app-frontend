@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import { Card, CardHeader, CardMedia, CardContent, Typography } from '@material-ui/core';
+import ReactPlayer from 'react-player';
 
 import 'components/VideoCard/VideoCard.scss';
 import { IVideoItem } from 'reducers/types';
 import { useHistory } from 'react-router-dom';
 import { LocationPath } from 'constants/location-path.enum';
-import ReactPlayer from 'react-player';
 import { formatValidDate } from 'helpers/date-format.helper';
 
 const VideoCard: FC<IVideoItem> = (props: IVideoItem) => {
